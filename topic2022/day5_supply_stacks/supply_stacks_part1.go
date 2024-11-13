@@ -7,7 +7,7 @@ import (
 var stack map[int]*Stack
 
 func getTopBox() {
-	stacks, moves := readInput()
+	stacks, moves := read()
 	stack = generateStack(stacks)
 
 	for _, moveArr := range moves {

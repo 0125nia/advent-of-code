@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func readInput() ([]string, [][]int) {
+func read() ([]string, [][]int) {
 	// open the file
 	file, err := os.Open("input.txt")
 	if err != nil {
