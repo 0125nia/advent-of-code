@@ -1,4 +1,4 @@
-package rock_paper_scissors
+package day2_rock_paper_scissors
 
 import "testing"
 

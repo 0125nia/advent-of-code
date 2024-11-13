@@ -1,4 +1,4 @@
-package calories
+package day1_calories
 
 import (
 	"fmt"

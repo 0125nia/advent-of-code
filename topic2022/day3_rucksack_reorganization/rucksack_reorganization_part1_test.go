@@ -1,4 +1,4 @@
-package rucksack_reorganization
+package day3_rucksack_reorganization
 
 import "testing"
 
