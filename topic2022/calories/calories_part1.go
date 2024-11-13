@@ -14,11 +14,7 @@ func calcCalories() {
 		return
 	}
 	var maxCalories int
-	for _, block := range input {
-		var calories int
-		for _, item := range block {
-			calories += item
-		}
+	for _, calories := range input {
 		if calories > maxCalories {
 			maxCalories = calories
 		}
@@ -26,7 +22,8 @@ func calcCalories() {
 	fmt.Println(maxCalories)
 }
 
-func readInput() [][]int {
+// https://adventofcode.com/2022/day/1/input
+func readInput() []int {
 	// 打开文件
 	file, err := os.Open("input.txt")
 	if err != nil {
@@ -35,7 +32,7 @@ func readInput() [][]int {
 	}
 	defer file.Close()
 
-	var blocks [][]int     // 用于存储每个块的数据
+	var blockSum []int
 	var currentBlock []int // 当前块
 
 	scanner := bufio.NewScanner(file)
@@ -45,8 +42,12 @@ func readInput() [][]int {
 		// 如果是空行，表示一个块的结束
 		if line == "" {
 			if len(currentBlock) > 0 {
-				blocks = append(blocks, currentBlock) // 添加当前块到blocks
-				currentBlock = []int{}                // 重置当前块
+				sum := 0
+				for _, num := range currentBlock {
+					sum += num
+				}
+				blockSum = append(blockSum, sum) // 添加当前块到blocks
+				currentBlock = []int{}           // 重置当前块
 			}
 			continue
 		}
@@ -61,7 +62,11 @@ func readInput() [][]int {
 
 	// 将最后一个块加入blocks（如果最后一行不是空行）
 	if len(currentBlock) > 0 {
-		blocks = append(blocks, currentBlock)
+		sum := 0
+		for _, num := range currentBlock {
+			sum += num
+		}
+		blockSum = append(blockSum, sum)
 	}
-	return blocks
+	return blockSum
 }

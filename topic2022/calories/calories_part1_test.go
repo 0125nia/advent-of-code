@@ -2,6 +2,6 @@ package calories
 
 import "testing"
 
-func TestCalories1(t *testing.T) {
+func TestPart1(t *testing.T) { //67658
 	calcCalories()
 }
