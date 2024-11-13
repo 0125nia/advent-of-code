@@ -10,7 +10,6 @@ func calcFullyContainNum() {
 	count := 0
 	for _, rangePair := range input {
 		if judgePairFullyContain(rangePair) {
-			fmt.Println(rangePair[0], rangePair[1], rangePair[2], rangePair[3])
 			count++
 		}
 	}
