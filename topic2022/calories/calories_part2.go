@@ -8,7 +8,7 @@ import (
 
 var topThree [3]int
 
-func calculateCaloriesInFirstThree() {
+func calculateCaloriesInTopThree() {
 	input := readInput()
 	if input == nil {
 		return
@@ -38,9 +38,9 @@ func sliding(num int) {
 	}
 }
 
-// 由于只有三个数，用条件判断进行排序更高效，减少了函数调用和切片包装。
+// Since there are only three numbers, sorting with conditional judgments is more efficient, reducing function calls and slice wrapping.
 func initialTopThree(num1, num2, num3 int) {
-	// 手动比较和排序三个数
+	// Compare and sort three numbers manually
 	if num1 < num2 {
 		num1, num2 = num2, num1
 	}
@@ -50,6 +50,6 @@ func initialTopThree(num1, num2, num3 int) {
 	if num2 < num3 {
 		num2, num3 = num3, num2
 	}
-	// 将排序后的数放入 topThree
+	// Place the sorted number in topThree
 	topThree = [3]int{num1, num2, num3}
 }

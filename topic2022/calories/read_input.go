@@ -9,34 +9,36 @@ import (
 
 // ReadInput https://adventofcode.com/20XX/day/X/input
 func readInput() []int {
-	// 打开文件
+	// open the file
 	file, err := os.Open("input.txt")
 	if err != nil {
 		fmt.Println("Error opening file:", err)
 		return nil
 	}
-	defer file.Close()
+	defer func(file *os.File) {
+		_ = file.Close()
+	}(file)
 
 	var blockSum []int
-	var currentBlock []int // 当前块
+	var currentBlock []int
 
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
 
-		// 如果是空行，表示一个块的结束
+		// If it is empty, it indicates the end of a block
 		if line == "" {
 			if len(currentBlock) > 0 {
 				sum := 0
 				for _, num := range currentBlock {
 					sum += num
 				}
-				blockSum = append(blockSum, sum) // 添加当前块到blocks
-				currentBlock = []int{}           // 重置当前块
+				blockSum = append(blockSum, sum) // Adds the current block to blocks
+				currentBlock = []int{}           // Reset current block
 			}
 			continue
 		}
-		// 将当前行转换为整数并加入当前块
+		// Converts the current row to an integer and adds the current block
 		num, err := strconv.Atoi(line)
 		if err != nil {
 			fmt.Println("Error converting line to integer:", err)
@@ -45,7 +47,7 @@ func readInput() []int {
 		currentBlock = append(currentBlock, num)
 	}
 
-	// 将最后一个块加入blocks（如果最后一行不是空行）
+	// Add the last block to blocks (if the last row is not empty)
 	if len(currentBlock) > 0 {
 		sum := 0
 		for _, num := range currentBlock {

@@ -2,6 +2,6 @@ package calories
 
 import "testing"
 
-func TestPart2(t *testing.T) { //200158
-	calculateCaloriesInFirstThree()
+func Test_calculateCaloriesInTopThree(t *testing.T) { //200158
+	calculateCaloriesInTopThree()
 }

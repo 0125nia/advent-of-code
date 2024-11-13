@@ -8,13 +8,15 @@ import (
 )
 
 func readInput() [][]rune {
-	// 打开文件
+	// open the file
 	file, err := os.Open("input.txt")
 	if err != nil {
 		fmt.Println("Error opening file:", err)
 		return nil
 	}
-	defer file.Close()
+	defer func(file *os.File) {
+		_ = file.Close()
+	}(file)
 
 	var input [][]rune
 
