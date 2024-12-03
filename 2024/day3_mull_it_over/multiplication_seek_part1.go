@@ -9,9 +9,8 @@ import (
 func multiplicationSeek1() {
 	input := readInput()
 	res := 0
-
+	re := regexp.MustCompile(`mul\((\d+),(\d+)\)`)
 	for _, line := range input {
-		re := regexp.MustCompile(`mul\((\d+),(\d+)\)`)
 		matches := re.FindAllStringSubmatch(line, -1)
 		for _, match := range matches {
 			res += mul(match[1], match[2])
