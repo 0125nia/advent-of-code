@@ -27,8 +27,8 @@ func XMASAppearTimes1() {
 	count := 0
 	for i := 0; i < len(input); i++ {
 		for j := 0; j < len(input); j++ {
-			if input[i][j] == XMAS[0] {
-				p := Point{i, j}
+			p := Point{i, j}
+			if p.pair(XMAS[0]) {
 				count += p.search()
 			}
 		}
@@ -63,7 +63,6 @@ func (p *Point) check(direction []int) bool {
 			return false
 		}
 	}
-	//fmt.Println(p, direction, last)
 	return true
 }
 
